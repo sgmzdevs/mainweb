@@ -7,252 +7,437 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       font-family:'Inter',sans-serif;
-      background:#0f172a;
+      background:#030712;
       color:white;
       overflow-x:hidden;
     }
 
-    .background{
+    body::before{
+      content:'';
       position:fixed;
       inset:0;
       background:
-      radial-gradient(circle at top left,#2563eb33,transparent 35%),
-      radial-gradient(circle at bottom right,#7c3aed33,transparent 35%),
-      #0f172a;
+      radial-gradient(circle at top left,#6d28d955,transparent 30%),
+      radial-gradient(circle at bottom right,#2563eb33,transparent 35%);
+      z-index:-2;
+    }
+
+    .grid{
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:60px 60px;
       z-index:-1;
+      mask-image:radial-gradient(circle at center,black,transparent 85%);
     }
 
     header{
-      padding:30px 10%;
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(14px);
+      background:rgba(3,7,18,.65);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .nav{
+      max-width:1300px;
+      margin:auto;
+      padding:20px 5%;
       display:flex;
       justify-content:space-between;
       align-items:center;
     }
 
     .logo{
-      font-size:1.5rem;
+      display:flex;
+      align-items:center;
+      gap:15px;
       font-weight:700;
-      letter-spacing:1px;
+      font-size:1.2rem;
     }
 
-    nav a{
+    .logo img{
+      width:58px;
+      height:58px;
+      object-fit:contain;
+      filter:drop-shadow(0 0 15px rgba(139,92,246,.35));
+    }
+
+    .menu{
+      display:flex;
+      gap:40px;
+    }
+
+    .menu a{
       color:#cbd5e1;
       text-decoration:none;
-      margin-left:30px;
       transition:.3s;
+      font-weight:500;
     }
 
-    nav a:hover{
+    .menu a:hover{
+      color:#8b5cf6;
+    }
+
+    .contact-btn{
+      padding:14px 24px;
+      border-radius:14px;
+      border:1px solid #8b5cf6;
+      text-decoration:none;
       color:white;
+      transition:.3s;
+      font-weight:600;
+    }
+
+    .contact-btn:hover{
+      background:#8b5cf6;
+      transform:translateY(-2px);
     }
 
     .hero{
-      min-height:85vh;
+      min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      text-align:center;
-      padding:0 10%;
+      padding:140px 5% 100px;
     }
 
-    .hero-content{
-      max-width:800px;
+    .hero-container{
+      max-width:1300px;
+      width:100%;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:60px;
     }
 
-    .tag{
-      display:inline-block;
-      padding:8px 16px;
-      background:#1e293b;
-      border:1px solid #334155;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(139,92,246,.1);
+      border:1px solid rgba(139,92,246,.25);
+      padding:10px 18px;
       border-radius:999px;
-      margin-bottom:25px;
-      color:#93c5fd;
-      font-size:.9rem;
+      margin-bottom:30px;
+      color:#a78bfa;
+      font-size:.95rem;
     }
 
     h1{
-      font-size:clamp(3rem,8vw,6rem);
-      line-height:1;
-      margin-bottom:25px;
-      font-weight:700;
+      font-size:clamp(3.5rem,7vw,6.5rem);
+      line-height:.95;
+      margin-bottom:30px;
+      font-weight:800;
+      letter-spacing:-3px;
     }
 
     .gradient{
-      background:linear-gradient(90deg,#60a5fa,#a78bfa);
+      background:linear-gradient(90deg,#8b5cf6,#3b82f6);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
 
     .description{
+      color:#94a3b8;
       font-size:1.2rem;
-      color:#cbd5e1;
       line-height:1.8;
+      max-width:700px;
       margin-bottom:40px;
     }
 
     .buttons{
       display:flex;
-      justify-content:center;
       gap:20px;
       flex-wrap:wrap;
     }
 
-    .btn{
-      padding:16px 28px;
-      border-radius:14px;
+    .btn-primary{
+      background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+      padding:18px 30px;
+      border-radius:16px;
       text-decoration:none;
+      color:white;
       font-weight:600;
       transition:.3s;
-    }
-
-    .btn-primary{
-      background:linear-gradient(90deg,#2563eb,#7c3aed);
-      color:white;
-      box-shadow:0 10px 30px rgba(124,58,237,.3);
+      box-shadow:0 15px 40px rgba(139,92,246,.25);
     }
 
     .btn-primary:hover{
-      transform:translateY(-3px);
+      transform:translateY(-4px);
     }
 
     .btn-secondary{
-      border:1px solid #334155;
-      color:#cbd5e1;
-      background:#111827;
+      border:1px solid rgba(255,255,255,.1);
+      padding:18px 30px;
+      border-radius:16px;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:.3s;
+      background:rgba(255,255,255,.03);
     }
 
     .btn-secondary:hover{
-      background:#1e293b;
+      border-color:#8b5cf6;
+    }
+
+    .hero-image{
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .hero-image::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      border-radius:50%;
+      background:radial-gradient(circle,#7c3aed55,transparent 70%);
+      filter:blur(30px);
+    }
+
+    .hero-image img{
+      width:100%;
+      max-width:520px;
+      position:relative;
+      z-index:2;
+      animation:float 5s ease-in-out infinite;
+      filter:drop-shadow(0 0 30px rgba(139,92,246,.35));
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-15px);}
+      100%{transform:translateY(0px);}
     }
 
     section{
-      padding:100px 10%;
+      padding:120px 5%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+      max-width:700px;
+      margin:auto;
+      line-height:1.7;
     }
 
     .cards{
+      max-width:1300px;
+      margin:auto;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-      margin-top:50px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
     }
 
     .card{
-      background:rgba(15,23,42,.7);
-      border:1px solid #1e293b;
-      padding:35px;
-      border-radius:24px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:28px;
+      padding:40px;
+      transition:.35s;
       backdrop-filter:blur(10px);
-      transition:.3s;
     }
 
     .card:hover{
-      transform:translateY(-5px);
-      border-color:#3b82f6;
+      transform:translateY(-8px);
+      border-color:#8b5cf6;
+      box-shadow:0 20px 50px rgba(139,92,246,.15);
+    }
+
+    .card-icon{
+      width:70px;
+      height:70px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+      margin-bottom:25px;
+      background:linear-gradient(135deg,#8b5cf6,#3b82f6);
     }
 
     .card h3{
       margin-bottom:15px;
-      font-size:1.3rem;
+      font-size:1.5rem;
     }
 
     .card p{
-      color:#cbd5e1;
-      line-height:1.7;
+      color:#94a3b8;
+      line-height:1.8;
     }
 
-    .contact{
+    .contact-section{
+      max-width:1000px;
+      margin:auto;
       text-align:center;
-      padding-bottom:120px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:32px;
+      padding:70px 40px;
+      backdrop-filter:blur(14px);
     }
 
-    .email{
-      margin-top:30px;
-      display:inline-block;
+    .contact-section h2{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .contact-section p{
+      color:#94a3b8;
       font-size:1.1rem;
-      color:#93c5fd;
+      margin-bottom:35px;
+    }
+
+    .email-box{
+      display:inline-block;
+      padding:22px 35px;
+      border-radius:20px;
+      background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+      color:white;
       text-decoration:none;
+      font-weight:600;
+      font-size:1.1rem;
+      box-shadow:0 15px 35px rgba(139,92,246,.25);
     }
 
     footer{
-      border-top:1px solid #1e293b;
-      padding:30px;
+      padding:50px 5%;
       text-align:center;
       color:#64748b;
-      font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,.05);
+      margin-top:100px;
     }
 
-    @media(max-width:768px){
-      header{
-        flex-direction:column;
-        gap:20px;
-      }
+    @media(max-width:950px){
 
-      nav a{
-        margin:0 10px;
-      }
-
-      h1{
-        font-size:3.2rem;
+      .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
       }
 
       .description{
-        font-size:1rem;
+        margin:auto auto 40px;
       }
+
+      .buttons{
+        justify-content:center;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      h1{
+        letter-spacing:-1px;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
-<div class="background"></div>
+<div class="grid"></div>
 
 <header>
-  <div class="logo">SGMZ DEVS</div>
 
-  <nav>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
+  <div class="nav">
 
-<section class="hero">
-
-  <div class="hero-content">
-
-    <div class="tag">
-      Desarrollo moderno • Diseño elegante • Soluciones digitales
+    <div class="logo">
+      <img src="logo.png" alt="SGMZ Devs Logo">
+      <span>SGMZ DEVS</span>
     </div>
 
-    <h1>
-      Creamos experiencias
-      <span class="gradient">digitales modernas</span>
-    </h1>
+    <div class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </div>
 
-    <p class="description">
-      En SGMZ Devs desarrollamos páginas web modernas,
-      rápidas y atractivas para negocios, marcas personales
-      y pequeñas empresas que quieren destacar online.
-    </p>
+    <a href="mailto:sgmzdevelopment@outlook.es" class="contact-btn">
+      Contactar
+    </a>
 
-    <div class="buttons">
-      <a href="mailto:sgmzdevelopment@outlook.es" class="btn btn-primary">
-        Contactar
-      </a>
+  </div>
 
-      <a href="#servicios" class="btn btn-secondary">
-        Ver servicios
-      </a>
+</header>
+
+<section class="hero" id="inicio">
+
+  <div class="hero-container">
+
+    <div>
+
+      <div class="badge">
+        ⚡ Desarrollo web moderno y profesional
+      </div>
+
+      <h1>
+        Impulsamos tu
+        <span class="gradient">
+          presencia digital
+        </span>
+      </h1>
+
+      <p class="description">
+        En SGMZ Devs desarrollamos páginas web modernas,
+        rápidas y visualmente impactantes para negocios,
+        marcas personales y pequeñas empresas que quieren
+        destacar online.
+      </p>
+
+      <div class="buttons">
+
+        <a href="mailto:sgmzdevelopment@outlook.es" class="btn-primary">
+          Escríbenos
+        </a>
+
+        <a href="#servicios" class="btn-secondary">
+          Ver Servicios
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="logo.png" alt="SGMZ Devs">
     </div>
 
   </div>
@@ -261,53 +446,93 @@
 
 <section id="servicios">
 
-  <h2 style="font-size:2.5rem;text-align:center;">
-    Nuestros Servicios
-  </h2>
+  <div class="section-title">
+
+    <h2>
+      Servicios Profesionales
+    </h2>
+
+    <p>
+      Soluciones digitales modernas enfocadas en rendimiento,
+      diseño y experiencia de usuario.
+    </p>
+
+  </div>
 
   <div class="cards">
 
     <div class="card">
-      <h3>Desarrollo Web</h3>
+
+      <div class="card-icon">
+        💻
+      </div>
+
+      <h3>
+        Desarrollo Web
+      </h3>
+
       <p>
-        Sitios web modernos, rápidos y totalmente adaptados
-        a móviles y ordenadores.
+        Creamos páginas web modernas, rápidas y totalmente
+        adaptadas a móviles y ordenadores.
       </p>
+
     </div>
 
     <div class="card">
-      <h3>Diseño UI/UX</h3>
+
+      <div class="card-icon">
+        🎨
+      </div>
+
+      <h3>
+        Diseño UI/UX
+      </h3>
+
       <p>
         Interfaces elegantes y experiencias intuitivas
-        centradas en el usuario.
+        enfocadas en conversión y profesionalidad.
       </p>
+
     </div>
 
     <div class="card">
-      <h3>Optimización</h3>
+
+      <div class="card-icon">
+        🚀
+      </div>
+
+      <h3>
+        Optimización
+      </h3>
+
       <p>
-        Webs optimizadas para velocidad, SEO y rendimiento
-        profesional.
+        Mejoramos velocidad, SEO y rendimiento para que
+        tu negocio tenga una presencia sólida online.
       </p>
+
     </div>
 
   </div>
 
 </section>
 
-<section class="contact" id="contacto">
+<section id="contacto">
 
-  <h2 style="font-size:2.5rem;margin-bottom:20px;">
-    Hablemos
-  </h2>
+  <div class="contact-section">
 
-  <p style="color:#cbd5e1;font-size:1.1rem;">
-    ¿Tienes un proyecto o necesitas presencia online?
-  </p>
+    <h2>
+      ¿Tienes un proyecto?
+    </h2>
 
-  <a class="email" href="mailto:sgmzdevelopment@outlook.es">
-    sgmzdevelopment@outlook.es
-  </a>
+    <p>
+      Hablemos y creemos algo increíble juntos.
+    </p>
+
+    <a class="email-box" href="mailto:sgmzdevelopment@outlook.es">
+      sgmzdevelopment@outlook.es
+    </a>
+
+  </div>
 
 </section>
 
