@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGMZ Devs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    .background{
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,#2563eb33,transparent 35%),
+      radial-gradient(circle at bottom right,#7c3aed33,transparent 35%),
+      #0f172a;
+      z-index:-1;
+    }
+
+    header{
+      padding:30px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:1.5rem;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    nav a{
+      color:#cbd5e1;
+      text-decoration:none;
+      margin-left:30px;
+      transition:.3s;
+    }
+
+    nav a:hover{
+      color:white;
+    }
+
+    .hero{
+      min-height:85vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:0 10%;
+    }
+
+    .hero-content{
+      max-width:800px;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:8px 16px;
+      background:#1e293b;
+      border:1px solid #334155;
+      border-radius:999px;
+      margin-bottom:25px;
+      color:#93c5fd;
+      font-size:.9rem;
+    }
+
+    h1{
+      font-size:clamp(3rem,8vw,6rem);
+      line-height:1;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#60a5fa,#a78bfa);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .description{
+      font-size:1.2rem;
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:40px;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 28px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg,#2563eb,#7c3aed);
+      color:white;
+      box-shadow:0 10px 30px rgba(124,58,237,.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid #334155;
+      color:#cbd5e1;
+      background:#111827;
+    }
+
+    .btn-secondary:hover{
+      background:#1e293b;
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .card{
+      background:rgba(15,23,42,.7);
+      border:1px solid #1e293b;
+      padding:35px;
+      border-radius:24px;
+      backdrop-filter:blur(10px);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#3b82f6;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:1.3rem;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    .contact{
+      text-align:center;
+      padding-bottom:120px;
+    }
+
+    .email{
+      margin-top:30px;
+      display:inline-block;
+      font-size:1.1rem;
+      color:#93c5fd;
+      text-decoration:none;
+    }
+
+    footer{
+      border-top:1px solid #1e293b;
+      padding:30px;
+      text-align:center;
+      color:#64748b;
+      font-size:.9rem;
+    }
+
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav a{
+        margin:0 10px;
+      }
+
+      h1{
+        font-size:3.2rem;
+      }
+
+      .description{
+        font-size:1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+  <div class="logo">SGMZ DEVS</div>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="tag">
+      Desarrollo moderno • Diseño elegante • Soluciones digitales
+    </div>
+
+    <h1>
+      Creamos experiencias
+      <span class="gradient">digitales modernas</span>
+    </h1>
+
+    <p class="description">
+      En SGMZ Devs desarrollamos páginas web modernas,
+      rápidas y atractivas para negocios, marcas personales
+      y pequeñas empresas que quieren destacar online.
+    </p>
+
+    <div class="buttons">
+      <a href="mailto:sgmzdevelopment@outlook.es" class="btn btn-primary">
+        Contactar
+      </a>
+
+      <a href="#servicios" class="btn btn-secondary">
+        Ver servicios
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="servicios">
+
+  <h2 style="font-size:2.5rem;text-align:center;">
+    Nuestros Servicios
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Desarrollo Web</h3>
+      <p>
+        Sitios web modernos, rápidos y totalmente adaptados
+        a móviles y ordenadores.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Diseño UI/UX</h3>
+      <p>
+        Interfaces elegantes y experiencias intuitivas
+        centradas en el usuario.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Optimización</h3>
+      <p>
+        Webs optimizadas para velocidad, SEO y rendimiento
+        profesional.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contacto">
+
+  <h2 style="font-size:2.5rem;margin-bottom:20px;">
+    Hablemos
+  </h2>
+
+  <p style="color:#cbd5e1;font-size:1.1rem;">
+    ¿Tienes un proyecto o necesitas presencia online?
+  </p>
+
+  <a class="email" href="mailto:sgmzdevelopment@outlook.es">
+    sgmzdevelopment@outlook.es
+  </a>
+
+</section>
+
+<footer>
+  © 2026 SGMZ Devs — Todos los derechos reservados
+</footer>
+
+</body>
+</html>
